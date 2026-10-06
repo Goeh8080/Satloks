@@ -33,6 +33,19 @@ object GranthBack {
         poke(activity)
       }
     }
+    activity.window.decorView.post { tune(activity) }
+    activity.window.decorView.postDelayed({ tune(activity) }, 800)
+  }
+
+  fun tune(activity: ComponentActivity) {
+    val web = find(activity.window?.decorView) ?: return
+    web.settings.setSupportZoom(false)
+    web.settings.builtInZoomControls = false
+    web.settings.displayZoomControls = false
+    web.isFocusable = true
+    web.isFocusableInTouchMode = true
+    web.isClickable = true
+    if (!web.hasFocus()) web.requestFocus()
   }
 
   fun poke(activity: ComponentActivity) {

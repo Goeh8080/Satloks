@@ -19,6 +19,11 @@ class MainActivity : ReactActivity() {
     GranthBack.install(this)
   }
 
+  override fun onResume() {
+    super.onResume()
+    window.decorView.post { GranthBack.tune(this) }
+  }
+
   override fun onNewIntent(intent: Intent) {
     super.onNewIntent(intent)
     setIntent(intent)
