@@ -36,9 +36,6 @@ export function DashboardScreen() {
         <Pressable onPress={() => void refresh()} style={[styles.sync, { backgroundColor: colors.maroon }]}>
           <Text style={{ color: colors.cream, fontWeight: "700" }}>सर्वर से अपडेट</Text>
         </Pressable>
-        <Pressable onPress={() => navigation.navigate("Feedback" as never)} style={[styles.sync, { backgroundColor: colors.saffron }]}>
-          <Text style={{ color: colors.brown, fontWeight: "700" }}>प्रतिक्रिया भेजें</Text>
-        </Pressable>
       </View>
       {query ? (
         <View style={{ gap: 8 }}>
