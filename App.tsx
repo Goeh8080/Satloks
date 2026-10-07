@@ -216,7 +216,9 @@ function hashFromShareUrl(url: string) {
 function openDeepLink(view: WebView | null, url: string) {
   const hash = hashFromShareUrl(url);
   if (!hash || !view) return;
-  view.injectJavaScript(`window.__granthOpenLink&&window.__granthOpenLink(${JSON.stringify(hash)});true;`);
+  view.injectJavaScript(
+    `(function go(n){if(window.__granthOpenLink){window.__granthOpenLink(${JSON.stringify(hash)});}else if(n<60){setTimeout(function(){go(n+1)},250);}})(0);true;`,
+  );
 }
 
 async function onBridge(raw: string, view: WebView | null, parts: Map<string, string[]>) {
