@@ -173,7 +173,10 @@ function Shell() {
         onLoadEnd={() => {
           web.current?.injectJavaScript(BRIDGE);
           web.current?.injectJavaScript(pad);
-          if (pendingLink.current) openDeepLink(web.current, pendingLink.current);
+          if (pendingLink.current) {
+            openDeepLink(web.current, pendingLink.current);
+            pendingLink.current = null;
+          }
         }}
         onShouldStartLoadWithRequest={(request) => {
           if (request.url.startsWith("mailto:")) {
